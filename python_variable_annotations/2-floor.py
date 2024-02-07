@@ -2,6 +2,6 @@
 """ task 2. Basic annotations - floor """
 
 
-def floor(n: float):
+def floor(n: float) -> int:
     """ type-annotated function floor """
     return int(n)
