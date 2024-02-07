@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+""" task 2. Basic annotations - floor """
+
+
+def floor(n: float):
+    """ type-annotated function floor """
+    return int(n)
