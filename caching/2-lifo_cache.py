@@ -17,10 +17,10 @@ class LIFOCache(BaseCaching):
             if key not in self.keys:
                 self.keys.append(key)
             if len(self.keys) > BaseCaching.MAX_ITEMS:
-                discard = self.keys.pop(0)
+                discard = self.keys.pop(-2)
                 del self.cache_data[discard]
                 print('DISCARD: {:s}'.format(discard))
-    
+
     def get(self, key):
         """ return the value linked to key"""
         if key is not None and key in self.cache_data:
