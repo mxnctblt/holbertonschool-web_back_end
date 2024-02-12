@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-""" Task 1. FIFO caching """
+""" Task 2. LIFO Caching """
 
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class FIFOCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """ inherits from BaseCaching and is a caching system """
     def __init__(self):
         super().__init__()
@@ -20,7 +20,7 @@ class FIFOCache(BaseCaching):
                 discard = self.keys.pop(0)
                 del self.cache_data[discard]
                 print('DISCARD: {:s}'.format(discard))
-
+    
     def get(self, key):
         """ return the value linked to key"""
         if key is not None and key in self.cache_data:
