@@ -21,10 +21,19 @@ The model will have the following attributes:
 - session_id, a nullable string
 - reset_token, a nullable string
 
-### 1. create user
+### Task 1. create user
 
 In this task, you will complete the DB class provided below to implement the add_user method.
 
 Note that DB.\_session is a private property and hence should NEVER be used from outside the DB class.
 
 Implement the add_user method, which has two required string arguments: email and hashed_password, and returns a User object. The method should save the user to the database. No validations are required at this stage
+
+### Task 2. Find user
+
+In this task you will implement the DB.find_user_by method. This method takes in arbitrary keyword arguments and returns the first row found in the users table as filtered by the method’s input arguments. No validation of input arguments required at this point.
+
+Make sure that SQLAlchemy’s NoResultFound and InvalidRequestError are raised when no results are found, or when wrong query arguments are passed, respectively.
+
+Warning:
+NoResultFound has been moved from sqlalchemy.orm.exc to sqlalchemy.exc between the version 1.3.x and 1.4.x of SQLAchemy - please make sure you are importing it from sqlalchemy.orm.exc
