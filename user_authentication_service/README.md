@@ -37,3 +37,11 @@ Make sure that SQLAlchemy’s NoResultFound and InvalidRequestError are raised w
 
 Warning:
 NoResultFound has been moved from sqlalchemy.orm.exc to sqlalchemy.exc between the version 1.3.x and 1.4.x of SQLAchemy - please make sure you are importing it from sqlalchemy.orm.exc
+
+### Task 3. update user
+
+In this task, you will implement the DB.update_user method that takes as argument a required user_id integer and arbitrary keyword arguments, and returns None.
+
+The method will use find_user_by to locate the user to update, then will update the user’s attributes as passed in the method’s arguments then commit changes to the database.
+
+If an argument that does not correspond to a user attribute is passed, raise a ValueError.
