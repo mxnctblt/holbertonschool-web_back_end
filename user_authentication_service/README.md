@@ -62,3 +62,17 @@ Auth.register_user should take mandatory email and password string arguments and
 If a user already exist with the passed email, raise a ValueError with the message User <user's email> already exists.
 
 If not, hash the password with \_hash_password, save the user to the database using self.\_db and return the User object.
+
+### Task 6. Basic Flask app
+
+In this task, you will set up a basic Flask app.
+
+Create a Flask app that has a single GET route ("/") and use flask.jsonify to return a JSON payload of the form:
+`{"message": "Bienvenue"}`
+
+Add the following code at the end of the module:
+
+```
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port="5000")
+```
