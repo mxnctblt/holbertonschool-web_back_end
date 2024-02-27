@@ -89,3 +89,9 @@ If the user is already registered, catch the exception and return a JSON payload
 and return a 400 status code
 
 Remember that you should only use AUTH in this app. DB is a lower abstraction that is proxied by Auth.
+
+### Task 8. Credentials validation
+
+In this task, you will implement the Auth.valid_login method. It should expect email and password required arguments and return a boolean.
+
+Try locating the user by email. If it exists, check the password with bcrypt.checkpw. If it matches return True. In any other case, return False.
