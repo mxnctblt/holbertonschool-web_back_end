@@ -80,13 +80,13 @@ def get_reset_password_token() -> str:
 
 
 @app.route('/reset_password', methods=['PUT'], strict_slashes=False)
-def update_password():
+def update_password() -> str:
     """ update password """
     email = request.form.get('email')
-    rest_token = request.form.get('rest_token')
+    reset_token = request.form.get('reset_token')
     password = request.form.get('new_password')
     try:
-        AUTH.update_password(rest_token, password)
+        AUTH.update_password(reset_token, password)
         return jsonify({"email": email, "message": "Password updated"})
     except Exception:
         abort(403)
