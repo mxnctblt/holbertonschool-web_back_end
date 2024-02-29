@@ -29,7 +29,7 @@ def users() -> str:
 
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
 def login() -> str:
-    """ login """
+    """ log in """
     email = request.form.get('email')
     password = request.form.get('password')
     log = AUTH.valid_login(email, password)
@@ -40,6 +40,18 @@ def login() -> str:
         return response
     else:
         abort(401)
+
+
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
+def logout() -> str:
+    """ log out """
+    session_cookie = request.cookies.get('session_id')
+    user = AUTH.get_user_from_session_id(session_cookie)
+    if user:
+        AUTH.destroy_session(user.id)
+        return redirect('/')
+    else:
+        abort(403)
 
 
 if __name__ == "__main__":
