@@ -145,3 +145,12 @@ In this task, you will implement a logout function to respond to the DELETE /ses
 The request is expected to contain the session ID as a cookie with key "session_id".
 
 Find the user with the requested session ID. If the user exists destroy the session and redirect the user to GET /. If the user does not exist, respond with a 403 HTTP status.
+
+### Task 15. User profile
+
+In this task, you will implement a profile function to respond to the GET /profile route.
+
+The request is expected to contain a session_id cookie. Use it to find the user. If the user exist, respond with a 200 HTTP status and the following JSON payload:
+`{"email": "<user email>"}`
+
+If the session ID is invalid or the user does not exist, respond with a 403 HTTP status.
