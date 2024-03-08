@@ -19,13 +19,13 @@ app.config.from_object(Config)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """ returns best matched language """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
-def hello_world():
+def hello_world() -> str:
     """ returns template"""
     return render_template('2-index.html')
 
