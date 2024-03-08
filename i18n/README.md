@@ -31,3 +31,9 @@ Use that class as config for your Flask app.
 ### 2. Get locale from request
 
 Create a get_locale function with the babel.localeselector decorator. Use request.accept_languages to determine the best match with our supported languages.
+
+### 3. Parametrize templates
+
+Use the \_ or gettext function to parametrize your templates. Use the message IDs home_title and home_header.
+
+Create a babel.cfg file containing
