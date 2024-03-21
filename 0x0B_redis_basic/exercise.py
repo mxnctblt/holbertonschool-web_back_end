@@ -35,7 +35,7 @@ class Cache:
         # Store the data with the unique key
         self._redis.set(key, data)
         return key
-    
+
     def get(self, key: str, fn: Callable = None) -> Union[str, bytes, int, float, None]:
         """ def get """
         data = self._redis.get(key)
