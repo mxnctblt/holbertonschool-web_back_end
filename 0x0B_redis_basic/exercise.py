@@ -20,17 +20,35 @@ def count_calls(method: Callable) -> Callable:
 def call_history(method: Callable) -> Callable:
     """ def call history """
     @wraps(method)
-    def wrapper(self, *args, **kwds):
+    def wrapper(self, *args, **kwargs):
         """ def wrapper """
-        key_m = method.__qualname__
-        inp_m = key_m + ':inputs'
-        outp_m = key_m + ':outputs'
-        data = str(args)
-        self._redis.rpush(inp_m, data)
-        fin = method(self, *args, **kwds)
-        self._redis.rpush(outp_m, str(fin))
-        return fin
+        key = method.__qualname__
+        input_key = key + ':inputs'
+        output_key = key + ':outputs'
+
+        self._redis.rpush(input_key, str(args))
+        data = method(self, *args, **kwargs)
+        self._redis.rpush(output_key, str(data))
+        return data
     return wrapper
+
+
+def replay(fn: Callable):
+    """ def replay """
+    store = redis.Redis()
+    count_key = fn.__qualname__
+    input_key = count_key + ":inputs"
+    output_key = count_key + ":outputs"
+
+    count = store.get(count_key).decode("utf-8")
+    print("{} was called {} times:".format(count_key, count))
+    inputs = store.lrange(input_key, 0, count)
+    outputs = store.lrange(output_key, 0, count)
+
+    for input, output in zip(inputs, outputs):
+        input = input.decode("utf-8")
+        output = output.decode("utf-8")
+        print("{}(*{}) -> {}".format(count_key, input, output))
 
 
 class Cache:
