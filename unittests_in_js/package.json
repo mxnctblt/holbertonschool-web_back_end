@@ -4,11 +4,14 @@
     "description": "",
     "main": "index.js",
     "devDependencies": {
-      "mocha": "^10.2.0"
+        "mocha": "^10.3.0"
     },
     "scripts": {
-      "test": "mocha"
+        "test": "mocha"
     },
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "chai": "^5.1.0"
+    }
 }
