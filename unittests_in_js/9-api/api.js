@@ -10,8 +10,14 @@ app.get('/', (req, res) => {
     res.send('Welcome to the payment system');
 });
 
-app.get('/cart/:id([0-9]+)', (req, res) => {
-    res.send(`Payment methods for cart ${req.params.id}`);
+app.get('/cart/:id', (req, res) => {
+    const { id } = req.params;
+    if(!(isNaN(Number(id)))) {
+        res.send('Payment methods for cart ' + id);
+    } else {
+        res.status(404);
+        res.end();
+    }
 });
 
 module.exports = app;
